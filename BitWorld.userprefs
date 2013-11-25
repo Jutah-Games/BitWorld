@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts_Reference_Unity2dExample\PlayerControl.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\RoarEngine\Assets\Plugins\RoarEngine\Widgets\RoarWidgetBase.cs">
     <Files>
-      <File FileName="Assets\Scripts_Reference_Unity2dExample\PlayerControl.cs" Line="56" Column="37" />
-      <File FileName="Assets\Scipts\PlayerMovement.cs" Line="14" Column="18" />
+      <File FileName="..\..\RoarEngine\Assets\Plugins\RoarEngine\Widgets\RoarWidgetBase.cs" Line="13" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
