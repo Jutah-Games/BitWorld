@@ -8,14 +8,17 @@ public class PlayerMovement : MonoBehaviour {
 	public float movementSpeed = 2f;
 	public float jumpSpeed = 2f;
 
-	private float jumpMultiplier = 50f;
+	private float jumpMultiplier = 100f;
 	private float movementMultiplier = 1f;
 
 	private Transform groundCheck;
 
 	private bool grounded = false;
+	private bool jump = false;
 
 	private string trueFalse;
+
+	private float value = 5;
 
 #endregion
 
@@ -27,8 +30,14 @@ public class PlayerMovement : MonoBehaviour {
 	void Update() {
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-		if(Input.GetKeyDown(KeyCode.Space) && grounded)
-			rigidbody2D.AddForce(new Vector2(0f, jumpSpeed * jumpMultiplier));
+		if(Input.GetButtonDown("Jump") && grounded)
+			jump = true;
+
+		if(Application.isEditor)
+			if(Input.GetKeyDown(KeyCode.F5)) {
+				transform.position = new Vector3(0, 4, 0);
+				transform.rotation = new Quaternion(0, 0, 0, 0);
+			}
 
 		/*grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && grounded)
@@ -37,6 +46,12 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate() {
 		playerMovement();
+
+		if (jump) {
+			rigidbody2D.AddForce(new Vector2(0f, jumpSpeed * jumpMultiplier));
+
+			jump = false;
+		}
 
 	}
 
@@ -49,12 +64,4 @@ public class PlayerMovement : MonoBehaviour {
 			transform.Translate(Vector3.right * movementSpeed * Time.deltaTime * movementMultiplier);
 	}
 
-	void OnGUI() {
-		if (grounded)
-			trueFalse = "true";
-		else
-			trueFalse = "false";
-
-		GUI.Box (new Rect(20, 20, 100, 25), "" + LayerMask.NameToLayer("Ground"));
-	}
 }

@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\UnityProject 2.0\Assets\Test.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Game\Scripts\PlayerScripts\PlayerMovement.cs">
     <Files>
-      <File FileName="..\UnityProject 2.0\Assets\Test.cs" Line="24" Column="44" />
+      <File FileName="Assets\_Game\Scripts\PlayerScripts\cameraFollow.cs" Line="22" Column="69" />
+      <File FileName="Assets\_Game\Scripts\PlayerScripts\PlayerMovement.cs" Line="11" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
