@@ -1,0 +1,30 @@
+    --------------
+    | To-Do List |
+    --------------
+
+Dennis & Adam		(Programming)
+------------------------------------------
+
+- Create Scene Handlers
+
+- Create Housing
+
+- Create Login-System connected to Parse and Facebook
+
+- Create Combat System
+
+
+
+
+Mirnes & Oskar		(Graphics)
+------------------------------------------
+
+- Create Basic Player
+
+- Create House
+
+- Create Background
+
+- Create Mobs
+
+- Create Dungeons
