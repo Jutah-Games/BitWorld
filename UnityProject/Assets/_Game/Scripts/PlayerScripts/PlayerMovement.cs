@@ -6,19 +6,14 @@ public class PlayerMovement : MonoBehaviour {
 
 #region Variables
 	public float movementSpeed = 2f;
-	public float jumpSpeed = 2f;
-
-	private float jumpMultiplier = 100f;
-	private float movementMultiplier = 1f;
+	public float jumpHeight = 2f;
 
 	private Transform groundCheck;
 
+	public float maxMovementSpeed = 10f;
+
 	private bool grounded = false;
 	private bool jump = false;
-
-	private string trueFalse;
-
-	private float value = 5;
 
 #endregion
 
@@ -38,17 +33,13 @@ public class PlayerMovement : MonoBehaviour {
 				transform.position = new Vector3(0, 4, 0);
 				transform.rotation = new Quaternion(0, 0, 0, 0);
 			}
-
-		/*grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-		if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && grounded)
-			rigidbody2D.AddForce(new Vector2(0f, jumpSpeed * jumpMultiplier));*/
 	}
 
 	void FixedUpdate() {
 		playerMovement();
 
 		if (jump) {
-			rigidbody2D.AddForce(new Vector2(0f, jumpSpeed * jumpMultiplier));
+			rigidbody2D.AddForce(new Vector2(0f, jumpHeight * 100f));
 
 			jump = false;
 		}
@@ -56,12 +47,17 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void playerMovement() {
-		
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-			transform.Translate(Vector3.left * movementSpeed * Time.deltaTime * movementMultiplier);
-		
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-			transform.Translate(Vector3.right * movementSpeed * Time.deltaTime * movementMultiplier);
+		float h = Input.GetAxis ("Horizontal");
+
+		if ((rigidbody2D.velocity.x * h < maxMovementSpeed) && grounded) 
+			rigidbody2D.AddForce (Vector2.right * h * 2 * movementSpeed);
+
+		if (Input.GetKey(KeyCode.A) && grounded)
+			rigidbody2D.AddForce (Vector2.right * movementSpeed)
+	}
+
+	void OnGUI() {
+//		GUI.Box (new Rect (25, 25, 50, 25), "" + Input.GetAxis ("Horizontal"));
 	}
 
 }
