@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.F5)) {
 				transform.position = new Vector3(0, 4, 0);
 				transform.rotation = new Quaternion(0, 0, 0, 0);
+				rigidbody2D.velocity = new Vector2(0f, 0f);
 			}
 	}
 
@@ -49,11 +50,12 @@ public class PlayerMovement : MonoBehaviour {
 	void playerMovement() {
 		float h = Input.GetAxis ("Horizontal");
 
-		if ((rigidbody2D.velocity.x * h < maxMovementSpeed) && grounded) 
+		if ((rigidbody2D.velocity.x * h < maxMovementSpeed)) 
 			rigidbody2D.AddForce (Vector2.right * h * 2 * movementSpeed);
 
-		if (Input.GetKey(KeyCode.A) && grounded)
-			rigidbody2D.AddForce (Vector2.right * movementSpeed)
+		if(Mathf.Abs(rigidbody2D.velocity.x) > maxMovementSpeed)
+			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxMovementSpeed, rigidbody2D.velocity.y);
+		
 	}
 
 	void OnGUI() {
