@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float maxMovementSpeed = 10f;
 
 	private bool grounded = false;
-	private bool jump = false;
+	public bool jump = false;
 
 #endregion
 
